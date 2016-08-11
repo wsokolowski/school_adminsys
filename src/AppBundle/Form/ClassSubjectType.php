@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+
 class ClassSubjectType extends AbstractType
 {
     /**
@@ -15,8 +16,8 @@ class ClassSubjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('date')
             ->add('subject')
-            ->add('course')
         ;
     }
     

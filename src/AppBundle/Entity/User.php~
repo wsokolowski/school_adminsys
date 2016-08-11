@@ -38,6 +38,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
+     * @Assert\Choice({"ROLE_STUDENT", "ROLE_TEACHER", "ROLE_SUPER_ADMIN"})
      *
      */
     protected $type;
@@ -103,5 +104,28 @@ class User extends BaseUser
         $this->roles = [];
 
         return $this;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return User
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }

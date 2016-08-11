@@ -23,18 +23,53 @@ class UserController extends Controller
      *
      * @Route("/", name="user")
      * @Method("GET")
-     * @Template()
+     * @Template("AppBundle:User:users.html.twig")
      */
     public function indexAction()
     {
+        return array(
+            'students' => 'students',
+            'teachers' => 'teachers',
+            'courses' => 'course'
+        );
+    }
+
+    /**
+     * Lists all User_Students entities.
+     *
+     * @Route("/students", name="students")
+     * @Method("GET")
+     * @Template("AppBundle:User:index.html.twig")
+     */
+    public function showStudentsAction()
+    {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AppBundle:User')->findAll();
+        $entities = $em->getRepository('AppBundle:User')->findByType("ROLE_STUDENT");
 
         return array(
             'entities' => $entities,
         );
     }
+
+    /**
+     * Lists all User_Teachers entities.
+     *
+     * @Route("/teachers", name="teachers")
+     * @Method("GET")
+     * @Template("AppBundle:User:index.html.twig")
+     */
+    public function showTeachersAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('AppBundle:User')->findByType("ROLE_TEACHER");
+
+        return array(
+            'entities' => $entities,
+        );
+    }
+
     /**
      * Creates a new User entity.
      *
@@ -263,4 +298,5 @@ class UserController extends Controller
             ->getForm()
         ;
     }
+
 }

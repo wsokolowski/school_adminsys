@@ -29,6 +29,13 @@ class ClassSubject
     private $subject;
 
     /**
+     * @var date
+     *
+     * @ORM\Column(name="date", type="date")
+     */
+    private $date;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Course", inversedBy="classSubjects")
      */
     private $course;
@@ -88,5 +95,28 @@ class ClassSubject
     public function getCourse()
     {
         return $this->course;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return ClassSubject
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

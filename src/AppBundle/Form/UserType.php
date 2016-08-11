@@ -23,7 +23,7 @@ class UserType extends AbstractType
             ->add('roles', 'choice',
                 [
                     'choices' => [
-                        'ROLE_SUPER_ADMIN' => 'admin',
+//                        'ROLE_SUPER_ADMIN' => 'admin',
                         'ROLE_TEACHER' => 'teacher',
                         'ROLE_STUDENT' => 'student'
                     ],

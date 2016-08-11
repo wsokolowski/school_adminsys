@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Class list</h1>
+
+    <table class="records_list">
+        <thead>
+        <tr>
+        </tr>
+        </thead>
+        <tbody>
+        {% for class in classes %}
+            <tr>
+                <td><a href="">{{ course.type }} {{ course.level }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="">Add new class</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('show_course_students', { 'id': course.id }) }}">Show students</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

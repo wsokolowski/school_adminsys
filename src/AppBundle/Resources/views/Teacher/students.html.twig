@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Course students</h1>
+
+    <table class="records_list">
+        <thead>
+        <tr>
+        </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.username }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <br><br>
+    <a href=" {{ path('show_my_courses') }}">Back to the list</a>
+{% endblock %}
