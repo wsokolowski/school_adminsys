@@ -1,24 +1,23 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h2>Course: {{ course }}</h2>
+    <h1>Welcome {{ student }}!</h1>
+
+    <h2>{{ course }}:</h2>
     <h2>Classes left: {{ course.numOfClassesLeft }}</h2>
 
-    <table class="records_list">
-        <thead>
+    <table>
+    <thead>
         <tr>
         </tr>
-        </thead>
-        <tbody>
+    </thead>
+    <tbody>
         {% for class in classes %}
             <tr>
                 <td>{{ class.date|date("d-m-Y") }}{{ " " }}{{ class.subject }}</td>
             </tr>
         {% endfor %}
-        </tbody>
+    </tbody>
     </table>
-
-    {{ form(form) }}
-    <a href="{{ path('show_my_courses') }}">Back to the list</a>
 
 {% endblock %}

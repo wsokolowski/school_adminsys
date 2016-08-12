@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 
 class ClassSubjectType extends AbstractType
@@ -16,7 +17,7 @@ class ClassSubjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
+            ->add('date', 'date', array("data" => new \DateTime()))
             ->add('subject')
         ;
     }

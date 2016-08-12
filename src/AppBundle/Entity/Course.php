@@ -267,4 +267,5 @@ class Course
     {
         return $this->type . " " . $this->level;
     }
+
 }

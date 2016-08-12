@@ -8,6 +8,7 @@
             <tr>
                 <th>Course</th>
                 <th>Teacher</th>
+                <th>Classes left</th>
             </tr>
         </thead>
         <tbody>
@@ -15,6 +16,7 @@
             <tr>
                 <td><a href="{{ path('course_show', { 'id': entity.id }) }}">{{ entity.type }} {{ entity.level }}</a></td>
                 <td>{{ entity.teacher }}</td>
+                <td>{{ entity.numOfClassesLeft}}</td>
                 <td>
                 <ul>
                     <li>

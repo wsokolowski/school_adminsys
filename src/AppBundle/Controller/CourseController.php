@@ -13,7 +13,7 @@ use AppBundle\Form\CourseType;
 /**
  * Course controller.
  *
- * @Route("/course")
+ * @Route("/user/course")
  */
 class CourseController extends Controller
 {
@@ -116,11 +116,26 @@ class CourseController extends Controller
             throw $this->createNotFoundException('Unable to find Course entity.');
         }
 
+        $id = $entity->getId();
+
+        $classes = $this
+            ->getDoctrine()
+            ->getRepository('AppBundle:ClassSubject')
+            ->findByCourse($id, array('date' => 'ASC'));
+
+        $students = $this
+            ->getDoctrine()
+            ->getRepository('AppBundle:User')
+            ->findByCourse($id);
+
+
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+            'students'    => $students,
+            'classes'     => $classes,
+            'delete_form' => $deleteForm->createView()
         );
     }
 
@@ -191,7 +206,6 @@ class CourseController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-
 
             $em->flush();
 

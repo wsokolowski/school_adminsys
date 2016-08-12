@@ -21,6 +21,10 @@ class TeacherController extends Controller
      */
     public function showMyCoursesAction(Request $request)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $teacherId = $this->getUser()->getId();
 
         $em = $this->getDoctrine()->getManager();

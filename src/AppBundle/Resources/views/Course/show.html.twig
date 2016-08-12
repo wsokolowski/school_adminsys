@@ -1,18 +1,10 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Course</h1>
+    <h1>Course: {{ entity }}</h1>
 
     <table class="record_properties">
         <tbody>
-            <tr>
-                <th>Type</th>
-                <td>{{ entity.type }}</td>
-            </tr>
-            <tr>
-                <th>Level</th>
-                <td>{{ entity.level }}</td>
-            </tr>
             <tr>
                 <th>Num of classes</th>
                 <td>{{ entity.numOfClasses }}</td>
@@ -23,6 +15,19 @@
             </tr>
         </tbody>
     </table>
+
+    <br>
+    <ul><h3>Class list:</h3>
+        {% for class in classes %}
+            <li>{{ class.date|date("d-m-Y") }}{{ " " }}{{ class.subject }}</li>
+        {% endfor %}
+    </ul>
+
+    <ul><h3>Student list:</h3>
+        {% for student in students %}
+            <li>{{ student }}</li>
+        {% endfor %}
+    </ul>
 
         <ul class="record_actions">
     <li>

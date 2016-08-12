@@ -14,20 +14,27 @@ class RedirectController extends Controller
      */
     public function redirectAction()
     {
-        return $this->redirect("/login");
-    }
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
 
-//    /**
-//     * @Route("/all")
-//     * @Template()
-//     */
-//    public function redirectAction()
-//    {
-//        return [
-//            "users" => "/user",
-//            "teachers" => "/teacher",
-//            "students" => "/"
-//        ];
-//    }
+        $userRoles = $this->getUser()->getRoles();
+        $userRole = $userRoles[0];
+
+        if($userRole === "ROLE_STUDENT"){
+            return $this->redirectToRoute('app_student_welcome');
+        };
+
+        if($userRole === "ROLE_TEACHER"){
+            return $this->redirectToRoute('show_my_courses');
+        };
+
+        if($userRole === "ROLE_SUPER_ADMIN"){
+            return $this->redirectToRoute('user');
+        };
+
+        return $this->redirect("/login");
+
+    }
 
 }

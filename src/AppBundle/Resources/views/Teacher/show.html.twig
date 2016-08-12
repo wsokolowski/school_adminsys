@@ -11,11 +11,11 @@
         <tbody>
         {% for course in courses %}
             <tr>
-                <td><a href="">{{ course.type }} {{ course.level }}</a></td>
+                <td>{{ course.type }} {{ course.level }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="">Add new class</a>
+                            <a href="{{ path('course_classes', { 'id': course.id }) }}">Add new class</a>
                         </li>
                         <li>
                             <a href="{{ path('show_course_students', { 'id': course.id }) }}">Show students</a>
